@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="leftBarApp">
+      <LeftBar/>
+    </div>
+    <Home />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import LeftBar from './components/LeftBar/LeftBar.vue'
+import Home from './components/HomePage/Home.vue'
+import './assets/css/leftBar.css'
+import './assets/css/addNote.css'
+import './assets/css/home/home.css'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LeftBar,
+    Home,
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+<style scoped>
+#app{
+  display: flex;
+  background-color: black;
+}
+.leftBarApp{
+  margin-top:300px;
+  position:fixed;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
 }
 </style>

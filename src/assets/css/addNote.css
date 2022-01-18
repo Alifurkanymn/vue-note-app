@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.addNote{
+    padding-top: 40px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width:90vw;
+    height: 90vh;
+}
+
+h3{
+    font-size:23px;
+    font-weight:400;
+    color: white;
+    margin-left: 20px;
+}
+
+input{
+    width:50vw;
+    margin: 20px;
+    outline:none;
+    font-size:20px;
+    padding:30px;
+    border-radius: 30px;
+    text-transform: capitalize;
+    border: none;
+}
+textarea{
+    width:50vw;
+    height:30vh;
+    margin: 20px;
+    padding:30px;
+    border-radius: 30px;
+    border: none;
+    outline:0;
+    text-transform: capitalize;
+    font-size:20px;
+}
+
+.comboBox{
+    display:flex;
+}
+.comboBox h3{
+    margin-right: 30px;
+}
+.comboBox select{
+    width:150px;
+    font-size:18px;
+    border-radius: 30px;
+    padding:0 10px;
+    outline:0;
+}
+
+.button{
+    margin-top: 30px;
+}
+button{
+    width:250px;
+    height:60px;
+    cursor:pointer;
+    border:none;
+    border-radius:30px;
+    background: linear-gradient(#2964FF, rgb(108, 120, 248));
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: linear-gradient(#ffffff, rgb(255, 255, 255));
+    color: #2964FF;
+    border: 1px solid #2964FF;
+    transition: 0.3s;
+}

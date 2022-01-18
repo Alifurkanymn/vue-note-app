@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.home{
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    width:90vw;
+    height: 100%;
+    margin-left: 130px;
+}
+
+.noteIcon{
+    width:25px;
+    height:25px;
+    color:yellow;
+    cursor: pointer;
+    border: none;
+}
+.deleteIcon{
+    width:25px;
+    height:25px;
+    margin-right:10px;
+    color:rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
+}
+

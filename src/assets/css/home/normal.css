@@ -1,0 +1,25 @@
+.normal{
+    margin-top:50px;
+    margin-left: 10px;
+}
+
+.normal h1{
+    color:white;
+}
+.normal hr{
+    margin-top:10px;
+    width:100px;
+}
+
+
+
+
+/* CONTENT */
+
+.content{
+    margin-top:50px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
