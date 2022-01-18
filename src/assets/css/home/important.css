@@ -1,0 +1,23 @@
+.important{
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.important h1{
+    color:white;
+}
+.important hr{
+    margin-top:10px;
+    width:100px;
+}
+
+
+
+
+/* CONTENT */
+
+.content{
+    margin-top:50px;
+    display:flex;
+    flex-wrap: wrap;
+}
