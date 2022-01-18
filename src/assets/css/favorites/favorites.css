@@ -1,0 +1,62 @@
+.favorites{
+    padding-top:50px;
+    width:90vw;
+    height: 93.9vh;
+    margin-left: 140px;
+}
+
+.favorites h1{
+    color:white;
+}
+.favorites hr{
+    margin-top:10px;
+    width:100px;
+}
+
+
+
+
+/* CONTENT */
+
+.content{
+    margin-top:50px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+/* NOTE */
+
+.note{
+    width:420px;
+    height:200px;
+    margin: 10px 0;
+    margin-right: 20px;
+    padding:20px;
+    background-color:#2964FF;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.note hr{
+    margin-bottom:10px;
+    width:50px;
+}
+
+.note p{
+    font-size:18px;
+    height:160px;
+    color: rgb(238, 238, 238);
+    overflow: hidden;
+}
+
+.title{
+    display: flex;
+    justify-content:space-between;
+}
+
+.title h3{
+    margin-left: 0;
+    margin-bottom: -8px;
+}
