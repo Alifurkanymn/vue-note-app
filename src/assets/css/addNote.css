@@ -5,7 +5,6 @@
     list-style: none;
     font-family:Arial, Helvetica, sans-serif;
 }
-
 .addNote{
     display:flex;
     flex-direction: column;
@@ -14,6 +13,12 @@
     margin: auto;
     width:90vw;
     height: 100vh;
+}
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h3{
@@ -41,7 +46,7 @@ textarea{
     border-radius: 30px;
     border: none;
     outline:0;
-    text-transform: capitalize;
+    text-transform:inherit ;
     font-size:20px;
 }
 
@@ -80,4 +85,35 @@ button:hover{
     color: #2964FF;
     border: 1px solid #2964FF;
     transition: 0.3s;
+}
+
+#Warning{
+    position: absolute;
+    display:none;
+    margin-left:1295px;
+    padding:20px;
+    margin-top:700px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+    height:50px;
+    background-color: #00a708;
+    animation: warning 0.3s linear;
+    overflow: hidden; 
+}
+@keyframes warning {
+    0%{
+        margin-top: 500px;
+        opacity: 0;
+    }
+    100%{
+        margin-top: 700px;
+        opacity: 1;
+    }
+}
+
+#Warning h1{
+    margin-top:15px;
+    font-size:18px;
+    color:rgb(255, 255, 255);
 }

@@ -2,6 +2,9 @@
   "name": "vue-note-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "*":{ "target" : "http://localhost:8082/"}
+ } ,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -42,3 +45,4 @@
     "not dead"
   ]
 }
+

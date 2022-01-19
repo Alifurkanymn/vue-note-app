@@ -1,7 +1,8 @@
 .deleted{
     padding-top:50px;
     width:90vw;
-    height: 93.9vh;
+    min-height: 100vh;
+    height: 100%;
     margin-left: 140px;
 }
 
