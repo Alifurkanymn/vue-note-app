@@ -39,7 +39,6 @@ export default {
   methods : {
       onSubmit(){
         axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/note.json`,{
-            headers: { "Access-Control-Allow-Origin": "*" },
             ...this.note,
         })
         .then(() =>{
