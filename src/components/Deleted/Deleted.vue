@@ -3,7 +3,7 @@
         <h1>Deleted</h1>
         <hr>
         <div class="content">
-            <div :style="{backgroundColor: randomColor()}" v-for="post in getDeletedNotes.slice().reverse()" :key="post.id" class="note">
+            <div :style="{backgroundColor: randomColor()}" v-for="post in deleted" :key="post.id" class="note">
                 <div class="title">
                     <h3>{{post.title}}</h3>
                     <div class="right">
@@ -18,12 +18,11 @@
 </template>
 
 <script>
-import '../../assets/css/deleted/deleted.css'
+import '../../assets/css/deleted/deleted.css';
 import axios from "axios";
 export default {
   data(){
     return{
-        getDeletedNotes :[],
         colorCache:{},
     }
   },
@@ -39,26 +38,22 @@ export default {
       onDelete(post){
           console.log(this.getDeletedNotes)
               console.log(post.id)
-          axios.delete(`http://vue-note-app-be493-default-rtdb.firebaseio.com/deleted/${post.id}`)
+          axios.delete(`http://localhost:8080/deleted/${post.id}`)
           .then(response => {
             console.log(response.data)
         })
       },
       
   },
+    
+  computed :{
+      deleted(){
+          return this.$store.getters.deletedData
+      }
+  },
 
-  beforeCreate(){
-    axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/deleted.json/`,)
-        .then(response=>{
-            let data = response.data;
-            for(let key in data){
-            this.getDeletedNotes.push({
-                ...data[key], 
-                id: key,
-            })
-            }
-        })
-        .catch(error=>{console.log(error)})
-    },
+  created(){
+    this.$store.dispatch('initDeleted')
+  },
 }
 </script>

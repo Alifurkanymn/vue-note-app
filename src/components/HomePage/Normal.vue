@@ -3,7 +3,7 @@
         <h1>Normal</h1>
         <hr>
         <div class="content">
-            <div :style="{backgroundColor: randomColor()}" v-for="post in getNormalNote.slice().reverse()" :key="post.id" class="note">
+            <div :style="{backgroundColor: randomColor()}" v-for="post in normal" :key="post.id" class="note">
                 <div class="title">
                     <h3>{{post.title}}</h3>
                     <div class="right">
@@ -45,20 +45,13 @@ export default {
         return (this.colorCache = `rgb(${r()}, ${g()}, ${b()})`);
       }
   },
-  beforeCreate(){
-    axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/note.json`,)
-          .then(response=>{
-              let data = response.data;
-              for(let key in data){
-                if(data[key].options==="Normal"){
-                    this.getNormalNote.push({
-                        ...data[key], 
-                        id: key,
-                    })
-                }
-              }
-          })
-          .catch(error=>{console.log(error)})
+  computed:{
+      normal(){
+        return  this.$store.getters.normalData;
+      }
+  },
+  created(){
+    this.$store.dispatch('initNormal');
  },
 }
 </script>

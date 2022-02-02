@@ -2,9 +2,7 @@
   "name": "vue-note-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "*":{ "target" : "http://localhost:8082/"}
- } ,
+  "proxy": "http://localhost:8080/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -14,7 +12,8 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-router": "^3.5.3"
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -45,4 +44,3 @@
     "not dead"
   ]
 }
-

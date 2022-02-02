@@ -3,7 +3,7 @@
         <h1>Important</h1>
         <hr>
         <div class="content">
-            <div :style="{backgroundColor: randomColor()}" v-for="post in getImportantNote.slice().reverse()" :key="post.id" class="note">
+            <div :style="{backgroundColor: randomColor()}" v-for="post in important" :key="post.id" class="note">
                 <div class="title">
                     <h3>{{post.title}}</h3>
                     <div class="right">
@@ -23,7 +23,6 @@ import axios from 'axios';
 export default {
   data(){
     return{
-        getImportantNote:[],
         colorCache:{},
     }
   },
@@ -55,20 +54,15 @@ export default {
         return (this.colorCache = `rgb(${r()}, ${g()}, ${b()})`);
       }
   },
-  beforeCreate(){
-    axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/note.json`,)
-          .then(response=>{
-              let data = response.data;
-              for(let key in data){
-                if(data[key].options==="Important"){
-                    this.getImportantNote.push({
-                        ...data[key], 
-                        id: key,
-                    })
-                }
-              }
-          })
-          .catch(error=>{console.log(error)})
+
+  computed:{
+      important(){
+          return this.$store.getters.importantData
+      }
+  },
+
+  created(){
+      this.$store.dispatch('initImportant')
  },
 }
 </script>

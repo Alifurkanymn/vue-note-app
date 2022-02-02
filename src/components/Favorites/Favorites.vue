@@ -3,7 +3,7 @@
         <h1>Favorites</h1>
         <hr>
         <div class="content">
-            <div :style="{backgroundColor: randomColor()}" v-for="post in getFavoritesNote.slice().reverse()" :key="post.id" class="note">
+            <div :style="{backgroundColor: randomColor()}" v-for="post in favorites" :key="post.id" class="note">
                 <div class="title">
                     <h3>{{post.title}}</h3>
                     <div class="right">
@@ -19,11 +19,9 @@
 
 <script>
 import '../../assets/css/favorites/favorites.css'
-import axios from "axios"
 export default {
   data(){
     return{
-        getFavoritesNote : [],
         colorCache:{},
     }
   },
@@ -36,18 +34,15 @@ export default {
         return (this.colorCache = `rgb(${r()}, ${g()}, ${b()})`);
       }
   },
-  beforeCreate(){
-    axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/favorites.json`,)
-        .then(response=>{
-            let data = response.data;
-            for(let key in data){
-            this.getFavoritesNote.push({
-                ...data[key], 
-                id: key,
-            })
-            }
-        })
-        .catch(error=>{console.log(error)})
-    },
+
+  computed:{
+      favorites(){
+          return this.$store.getters.favoritesData
+      }
+  },
+
+  created(){
+    this.$store.dispatch('initFavorites');
+  },
 }
 </script>
