@@ -3,7 +3,7 @@
         <h1>Unhurried</h1>
         <hr>
         <div class="content">
-            <div :style="{backgroundColor: randomColor()}" v-for="post in getUnhurriedNote.slice().reverse()" :key="post.id" class="note">
+            <div :style="{backgroundColor: randomColor()}" v-for="post in unhurried" :key="post.id" class="note">
                 <div class="title">
                     <h3>{{post.title}}</h3>
                     <div class="right">
@@ -46,20 +46,13 @@ export default {
         return (this.colorCache = `rgb(${r()}, ${g()}, ${b()})`);
       }
   },
-  beforeCreate(){
-    axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/note.json`,)
-          .then(response=>{
-              let data = response.data;
-              for(let key in data){
-                if(data[key].options==="Unhurried"){
-                    this.getUnhurriedNote.push({
-                        ...data[key], 
-                        id: key,
-                    })
-                }
-              }
-          })
-          .catch(error=>{console.log(error)})
+  computed:{
+      unhurried(){
+          return this.$store.getters.unhurriedData;
+      }
+  },
+  created(){
+    this.$store.dispatch('initUnhurried')
  },
 }
 </script>
