@@ -19,23 +19,16 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   data(){
     return{
         getNormalNote:[],
-        colorCache:{},
     }
   },
   methods : {
       postFavorite(post){
-          axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/favorites.json/`,{
-              ...post,
-          })
-          .then(response=>{
-              console.log(response)
-          }).catch(error=>{console.log(error)})      
+          this.$store.dispatch('postFavorite', post)
       },
       randomColor(){
         const r = () => Math.floor(256 * Math.random());

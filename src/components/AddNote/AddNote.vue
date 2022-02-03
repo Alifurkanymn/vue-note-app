@@ -18,7 +18,7 @@
                         </select>
                     </div>
                     <div class="button">
-                        <button>Add</button>
+                        <button type="submit">Add</button>
                 </div>
             </form>
         <div id="Warning">
@@ -41,10 +41,19 @@ export default {
     onSubmit(){
         if(this.note.options === "Important") {
             this.$store.dispatch('addNoteImportant',this.note)
+            .then(()=>{
+            this.$router.push('/')
+            })
         }else if(this.note.options === "Normal"){
             this.$store.dispatch('addNoteNormal',this.note)
-        }else{
+            .then(()=>{
+            this.$router.push('/')
+            })
+        }else if(this.note.options == "Unhurried"){
             this.$store.dispatch('addNoteUnhurried',this.note)
+            .then(()=>{
+            this.$router.push('/')
+            })
         }
     }
   }

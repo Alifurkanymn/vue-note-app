@@ -8,13 +8,12 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     
     state : {
-        getDeletedNotes :[],
-        getFavoritesNotes :[],
         getImportantNotes :[],
         getNormalNotes:[],
         getUnhurriedNotes:[],
-        addNormalNote:[],
-        addImportantNote:[],
+        getDeletedNotes :[],
+        getFavoritesNotes :[],
+        onDeleted:[],
     },
     getters,
     mutations,

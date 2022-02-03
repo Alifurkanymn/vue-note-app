@@ -19,39 +19,24 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   data(){
     return{
-        colorCache:{},
     }
   },
   methods : {
       postFavorite(post){
-        axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/favorites.json/`,{
-            ...post,
-        })
-        .then((post)=>{
-                console.log(post.title)
-            console.log("Başarili")
-        }).catch(error=>{console.log(error)})
-          
+        this.$store.dispatch('postFavorite', post)
       },
       postDeleted(post){
-        axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/deleted.json/`,{
-            ...post,
-        })
-        .then(response=>{
-            console.log(response)
-        }).catch(error=>{console.log(error)})
-          
+        this.$store.dispatch('postDeleted', post)
       },
       randomColor(){
         const r = () => Math.floor(256 * Math.random());
         const g = () => Math.floor(200 * Math.random());
         const b = () => Math.floor(100 * Math.random());
 
-        return (this.colorCache = `rgb(${r()}, ${g()}, ${b()})`);
+        return `rgb(${r()}, ${g()}, ${b()})`;
       }
   },
 
