@@ -12,7 +12,7 @@ export const addImportantNotes = (state,note)=>{
 export const initNormalData = (state,getNormalNotes)=>{
     state.getNormalNotes = getNormalNotes;
 }
-export const addNormaltNotes = (state,note)=>{
+export const addNormalNotes = (state,note)=>{
     state.getNormalNotes.push(note)
 }
 

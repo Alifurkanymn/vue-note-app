@@ -3,7 +3,9 @@
     <div class="leftBarApp">
       <LeftBar/>
     </div>
+  <transition name="pageAnimation" mode="out-in">
     <router-view></router-view>
+  </transition>
   </div>
 </template>
 
@@ -25,6 +27,8 @@ export default {
 #app{
   display: flex;
   background-color: black;
+  overflow-x: hidden;
+
 }
 .leftBarApp{
   margin-top:300px;
@@ -33,5 +37,14 @@ export default {
   flex-direction: column; 
   justify-content: center;
 }
+
+.pageAnimation-enter, .pageAnimation-leave-active{
+  opacity:0;
+  transform: translate(50px);
+}
+.pageAnimation-enter-active, .pageAnimation-leave-active{
+  transition: all .5s;
+}
+  
 </style>
 

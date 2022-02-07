@@ -22,7 +22,6 @@ export const unhurriedData = (state) =>{
 
 
 export const deletedData = (state) =>{
-    console.log(state.getDeletedNotes);
     return state.getDeletedNotes;
 }
 

@@ -17,11 +17,8 @@ export const initImportant = (context)=>{
 export const addNoteImportant = (context,note)=>{
     return axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/importantNote.json`, JSON.stringify(note))
     .then(response =>{
-        context.commit('addImportantNotes', {id : response.data.name, ...note})
-        document.getElementById("Warning").style.display = "block";
-        setTimeout(function(){
-            document.getElementById("Warning").style.display = "none";
-        },3000)
+        note.id = response.data.name
+        context.commit('addImportantNotes', {...note})
         note = ""
     }).catch(e=>{
         console.log(e)
@@ -44,10 +41,6 @@ export const addNoteNormal = (context,note)=>{
     axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/normalNote.json`, JSON.stringify(note))
     .then(response =>{
         context.commit('addNormalNotes', {id : response.data.name, ...note})
-        document.getElementById("Warning").style.display = "block";
-        setTimeout(function(){
-            document.getElementById("Warning").style.display = "none";
-        },3000)
         note = ""
     }).catch(e=>{
         console.log(e)
@@ -71,10 +64,6 @@ export const addUnhurriedNotes = (context, note) =>{
     axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/normalNote.json`, JSON.stringify(note))
     .then(response =>{
         context.commit('addUnhurriedNotes', {id : response.data.name, ...note})
-        document.getElementById("Warning").style.display = "block";
-        setTimeout(function(){
-            document.getElementById("Warning").style.display = "none";
-        },3000)
         note = ""
     }).catch(e=>{
         console.log(e)
@@ -86,8 +75,7 @@ export const addNoteUnhurried = (context, note)=>{
     return axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/unhurriedNote.json`, {
         ...note
     })
-    .then(response => {
-        console.log(response);
+    .then(() => {
         document.getElementById("Warning").style.display = "block";
         setTimeout(function(){
             document.getElementById("Warning").style.display = "none";
@@ -103,14 +91,12 @@ export const addNoteUnhurried = (context, note)=>{
 
 
 // Deleted Actions
-// add mormal data gibi json strignfy şeklinde yap
 
 export const initDeleted = (context) =>{
     axios.get(`https://vue-note-app-be493-default-rtdb.firebaseio.com/deleted.json`)
     .then(response=>{
-        console.log(data);
         let data = response.data;
-        context.commit('initDeletedData',data)
+        context.commit('initDeletedData',data);
     })
     .catch(error=>{console.log(error)})
 }
@@ -119,6 +105,7 @@ export const initDeleted = (context) =>{
 export const deleted = (context, noteID) => {
     axios.post('https://vue-note-app-be493-default-rtdb.firebaseio.com/onDeleted.json/', JSON.stringify({id : noteID.id}))
     .then(() => {
+        console.log(noteID);
         context.commit('inDeleted', noteID.id)
     })
 }
@@ -126,7 +113,8 @@ export const deleted = (context, noteID) => {
 export const postDeleted = (context, note) =>{
     axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/deleted.json`, JSON.stringify(note))
     .then(response =>{
-        context.commit('initDeletedData', {id : response.data.name, ...note})
+        note.id = response.data.name
+        context.commit('initDeletedData', {...note})
     })
 }
 
