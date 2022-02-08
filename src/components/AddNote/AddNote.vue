@@ -34,7 +34,6 @@ export default {
             title : "",
             content : "",
             options : "",
-            id : "",
         }
     }
   },

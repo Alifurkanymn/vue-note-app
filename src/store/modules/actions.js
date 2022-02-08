@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+axios.defaults.withCredentials = false
 
 // Important Actions
 
@@ -16,8 +16,7 @@ export const initImportant = (context)=>{
 
 export const addNoteImportant = (context,note)=>{
     return axios.post(`https://vue-note-app-be493-default-rtdb.firebaseio.com/importantNote.json`, JSON.stringify(note))
-    .then(response =>{
-        note.id = response.data.name
+    .then(() =>{
         context.commit('addImportantNotes', {...note})
         note = ""
     }).catch(e=>{
@@ -102,11 +101,11 @@ export const initDeleted = (context) =>{
 }
 
 
+
 export const deleted = (context, noteID) => {
-    axios.post('https://vue-note-app-be493-default-rtdb.firebaseio.com/onDeleted.json/', JSON.stringify({id : noteID.id}))
+    axios.delete(`https://vue-note-app-be493-default-rtdb.firebaseio.com/deleted/${noteID}.json`,)
     .then(() => {
         console.log(noteID);
-        context.commit('inDeleted', noteID.id)
     })
 }
 

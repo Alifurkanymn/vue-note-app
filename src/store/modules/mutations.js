@@ -4,6 +4,7 @@ export const initImportantData = (state,getImportantNotes)=>{
     state.getImportantNotes = getImportantNotes;
 }
 export const addImportantNotes = (state,note)=>{
+    console.log(note)
     state.getImportantNotes.push(note)
 }
 
@@ -37,12 +38,6 @@ export const addDeletedData = (state,note)=>{
     state.onDeleted.push(note);
 }
 
-export const inDeleted = (state, noteId) =>{
-    let index = state.getDeletedNotes.findIndex(c=> c.id == noteId)
-    if(index > -1){
-        state.getDeletedNotes.splice(index, 1)
-    }
-}
 
 // Favorites
 
@@ -52,9 +47,3 @@ export const initFavoritesData = (state,getFavoritesNotes)=>{
 export const addFavoritesData = (state,note)=>{
     state.getFavoritesNotes.push(note);
 }
-
-// Background
-
-// export const backgroundColor = (state,getBackgroundColor) =>{
-//     state.backgroundColors = getBackgroundColor;
-// }
